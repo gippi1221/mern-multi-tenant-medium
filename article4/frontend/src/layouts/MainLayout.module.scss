@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  gap: 8px;
+
+  .card {
+    padding: 4px 16px;
+
+    .header {
+      box-sizing: border-box;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .content {
+    flex: 1;
+  }
+}
