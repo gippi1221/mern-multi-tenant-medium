@@ -5,3 +5,4 @@ The project is organized into incrementally numbered directories — each one ma
 
 1) [Multi-tenant MERN Application. Part 1.](https://medium.com/@gippi122221/multi-tenant-mern-application-part-1-db122a54c465)
 2) [Multi-tenant MERN Application. Part 2.](https://medium.com/@gippi122221/multi-tenant-mern-application-part-2-d9b88d7f9635)
+3) [Multi-tenant MERN Application. Part 3.](https://medium.com/@gippi122221/multi-tenant-mern-application-part-3-33dad695291b)
