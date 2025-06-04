@@ -20,7 +20,8 @@ export const signIn = async (req: Request, res: Response, next: NextFunction) =>
     }
 
     const user = await User.findOne({ email: email.toLowerCase() });
-    if (user && (await user.comparePassword(password))) {
+
+    if (!user || !(await user.comparePassword(password))) {
       res.status(401).json({ message: 'Invalid email or password' });
       return;
     }
