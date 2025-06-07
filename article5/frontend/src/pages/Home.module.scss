@@ -1,0 +1,36 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .header {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: none;
+
+    .headerCard {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      .headerText {
+        margin: 0px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .card {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 220px;
+    }
+  }
+}
