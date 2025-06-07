@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { AuthService } from '../services';
 import { NotFoundError, TokenError, ValidationError } from '../utils/errors';
+import { IAccessTokenPayload } from '../interfaces';
 
 const JWT_ACCESS_SECRET = process.env.JWT_ACCESS_SECRET;
 
@@ -22,11 +23,16 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
     }
 
     const jwtSecret = process.env.JWT_ACCESS_SECRET || '';
-    const decoded = jwt.verify(token, jwtSecret) as JwtPayload;
+    const decoded = jwt.verify(token, jwtSecret) as JwtPayload & IAccessTokenPayload;
 
     if (!decoded?._id) {
       await AuthService.clearTokens(req, res, tenantId);
       return next(new TokenError('Invalid token: User ID not found'));
+    }
+
+    if (!decoded?.tenantId || decoded.tenantId !== tenantId) {
+      await AuthService.clearTokens(req, res, tenantId);
+      return next(new TokenError('Invalid token: Tenant mismatch'));
     }
 
     req.userId = decoded._id;

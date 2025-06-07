@@ -20,7 +20,7 @@ class AuthService {
       throw new ValidationError('JWT_REFRESH_SECRET not found in environment variables');
     }
 
-    const accessToken = jwt.sign(user, jwtAccessSecret, {
+    const accessToken = jwt.sign({ ...user, tenantId }, jwtAccessSecret, {
       expiresIn: '15m',
     });
 
